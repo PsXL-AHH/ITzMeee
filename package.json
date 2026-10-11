@@ -1,0 +1,13 @@
+{
+  "name": "psxl-cinematic-portfolio",
+  "version": "1.0.0",
+  "description": "PsXL - Cinematic Sharingan Themed Portfolio",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["portfolio", "sharingan", "cinematic", "psxl"],
+  "author": "PsXL",
+  "license": "MIT"
+}

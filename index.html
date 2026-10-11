@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VESPER — Celestial Twilight & Reality Realm</title>
+  <meta name="description" content="Dual atmospheric realm experience featuring the serene Vesper Twilight sky and Tomoie Uchiha Throne Reality realm.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23050507' stroke='%23ff1744' stroke-width='6'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%23ff1744'/%3E%3Cpath d='M50 30 C 58 30 65 37 65 45 C 65 52 58 55 53 52 C 48 49 45 42 50 30 Z' fill='%23ff1744'/%3E%3C/svg%3E">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="theme-vesper">
+
+  <!-- =====================================================================
+       CUSTOM CURSOR (Morphs between Tomoe and Vesper Starlight)
+       ===================================================================== -->
+  <div class="custom-cursor">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring">
+      <!-- Sharingan Tomoe Icon (Red Theme) -->
+      <svg class="cursor-tomoe" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="6"/>
+        <circle cx="50" cy="50" r="10" fill="currentColor"/>
+        <path d="M50 20 C 62 20 72 30 72 40 C 72 50 62 55 54 50 C 46 45 42 35 50 20 Z" fill="currentColor"/>
+        <path d="M24 65 C 18 54 22 40 32 34 C 41 29 50 34 50 43 C 50 52 40 59 24 65 Z" fill="currentColor"/>
+        <path d="M76 65 C 70 76 56 80 47 71 C 38 63 43 53 52 50 C 61 47 71 54 76 65 Z" fill="currentColor"/>
+      </svg>
+      <!-- Vesper Celestial Star Icon (Anime Blue & White Theme) -->
+      <svg class="cursor-sakura cursor-vesper" viewBox="0 0 100 100">
+        <path d="M50 10 L61 36 L88 40 L68 59 L74 86 L50 72 L26 86 L32 59 L12 40 L39 36 Z" fill="currentColor"/>
+        <circle cx="50" cy="50" r="10" fill="#ffffff"/>
+      </svg>
+      <span class="cursor-label"></span>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       ANIMATED CELESTIAL BRANCH (Top-Right Corner Theme Switcher)
+       ===================================================================== -->
+  <div class="sakura-corner-branch vesper-corner-branch" id="sakura-theme-toggle" role="button" tabindex="0" title="Toggle Realm" data-cursor-label="REALM">
+    <div class="branch-glow"></div>
+    <div class="branch-tooltip">
+      <span class="tooltip-dot"></span>
+      <span class="tooltip-text">TOMOIE REALM</span>
+    </div>
+
+    <!-- SVG Animated Branch -->
+    <svg class="branch-svg" viewBox="0 0 280 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Main Woody Branch -->
+      <path d="M280 0 C 250 15 220 20 180 35 C 140 50 110 80 80 115 C 60 140 30 160 0 170" 
+            stroke="var(--branch-color, #1e293b)" stroke-width="10" stroke-linecap="round"/>
+      <path d="M280 0 C 250 15 220 20 180 35 C 140 50 110 80 80 115 C 60 140 30 160 0 170" 
+            stroke="var(--branch-core, #38bdf8)" stroke-width="5" stroke-linecap="round"/>
+      
+      <!-- Sub-branches -->
+      <path d="M190 32 C 160 55 150 85 140 120" 
+            stroke="var(--branch-color, #3b2226)" stroke-width="6" stroke-linecap="round"/>
+      <path d="M120 75 C 90 95 80 130 70 160" 
+            stroke="var(--branch-color, #3b2226)" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M85 110 C 65 115 50 135 35 150" 
+            stroke="var(--branch-color, #3b2226)" stroke-width="3.5" stroke-linecap="round"/>
+
+      <!-- Blooming Flowers -->
+      <!-- Flower 1 (Cluster near main split) -->
+      <g class="sakura-flower f1" transform="translate(140, 115)">
+        <circle class="petal-circ" cx="0" cy="0" r="7" fill="#ffb3cb"/>
+        <circle class="petal-circ" cx="-10" cy="-6" r="9" fill="#ffa1be" opacity="0.9"/>
+        <circle class="petal-circ" cx="10" cy="-6" r="9" fill="#ffa1be" opacity="0.9"/>
+        <circle class="petal-circ" cx="-7" cy="9" r="9" fill="#ff90b2" opacity="0.9"/>
+        <circle class="petal-circ" cx="7" cy="9" r="9" fill="#ff90b2" opacity="0.9"/>
+        <circle class="petal-circ" cx="0" cy="-12" r="9" fill="#ffb3cb" opacity="0.95"/>
+        <circle class="flower-center" cx="0" cy="0" r="3.5" fill="#fff59d"/>
+      </g>
+
+      <!-- Flower 2 (Tip branch) -->
+      <g class="sakura-flower f2" transform="translate(75, 155)">
+        <circle class="petal-circ" cx="-8" cy="-5" r="8" fill="#ffa1be" opacity="0.9"/>
+        <circle class="petal-circ" cx="8" cy="-5" r="8" fill="#ffa1be" opacity="0.9"/>
+        <circle class="petal-circ" cx="-6" cy="8" r="8" fill="#ff90b2" opacity="0.9"/>
+        <circle class="petal-circ" cx="6" cy="8" r="8" fill="#ff90b2" opacity="0.9"/>
+        <circle class="petal-circ" cx="0" cy="-10" r="8" fill="#ffb3cb" opacity="0.95"/>
+        <circle class="flower-center" cx="0" cy="0" r="3" fill="#fff59d"/>
+      </g>
+
+      <!-- Flower 3 (Center upper) -->
+      <g class="sakura-flower f3" transform="translate(180, 45)">
+        <circle class="petal-circ" cx="-9" cy="-5" r="8.5" fill="#ffa1be" opacity="0.9"/>
+        <circle class="petal-circ" cx="9" cy="-5" r="8.5" fill="#ffa1be" opacity="0.9"/>
+        <circle class="petal-circ" cx="-6" cy="8" r="8.5" fill="#ff85aa" opacity="0.9"/>
+        <circle class="petal-circ" cx="6" cy="8" r="8.5" fill="#ff85aa" opacity="0.9"/>
+        <circle class="petal-circ" cx="0" cy="-11" r="9" fill="#ffb3cb" opacity="0.95"/>
+        <circle class="flower-center" cx="0" cy="0" r="3.5" fill="#fff59d"/>
+      </g>
+
+      <!-- Flower 4 (Lower tip) -->
+      <g class="sakura-flower f4" transform="translate(25, 165)">
+        <circle class="petal-circ" cx="-7" cy="-4" r="7" fill="#ff99b8" opacity="0.9"/>
+        <circle class="petal-circ" cx="7" cy="-4" r="7" fill="#ff99b8" opacity="0.9"/>
+        <circle class="petal-circ" cx="-5" cy="7" r="7" fill="#ff80a5" opacity="0.9"/>
+        <circle class="petal-circ" cx="5" cy="7" r="7" fill="#ff80a5" opacity="0.9"/>
+        <circle class="petal-circ" cx="0" cy="-9" r="7.5" fill="#ffb3cb" opacity="0.95"/>
+        <circle class="flower-center" cx="0" cy="0" r="2.5" fill="#fff59d"/>
+      </g>
+
+      <!-- Delicate Buds & Tiny Petals -->
+      <circle cx="110" cy="75" r="5" fill="#ff85aa"/>
+      <circle cx="155" cy="80" r="4.5" fill="#ff99b8"/>
+      <circle cx="95" cy="130" r="4" fill="#ff80a5"/>
+      <circle cx="50" cy="140" r="4" fill="#ffa1be"/>
+      
+      <!-- Detached Drifting Petals -->
+      <ellipse class="drifting-petal p1" cx="105" cy="170" rx="5" ry="8" fill="#ffa1be"/>
+      <ellipse class="drifting-petal p2" cx="170" cy="135" rx="4" ry="7" fill="#ffb3cb"/>
+      <ellipse class="drifting-petal p3" cx="55" cy="190" rx="5" ry="9" fill="#ffa1be"/>
+    </svg>
+  </div>
+
+  <!-- =====================================================================
+       HEADER / NAV
+       ===================================================================== -->
+  <header class="site-header">
+    <a href="#" class="brand-badge" data-cursor-label="PSXL">
+      <div class="brand-icon">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="6"/>
+          <circle cx="50" cy="50" r="11" fill="currentColor"/>
+          <path d="M50 20 C 62 20 72 30 72 40 C 72 50 62 55 54 50 C 46 45 42 35 50 20 Z" fill="currentColor"/>
+          <path d="M24 65 C 18 54 22 40 32 34 C 41 29 50 34 50 43 C 50 52 40 59 24 65 Z" fill="currentColor"/>
+          <path d="M76 65 C 70 76 56 80 47 71 C 38 63 43 53 52 50 C 61 47 71 54 76 65 Z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="brand-info">
+        <span class="brand-name" id="nav-brand-name">VESPER</span>
+        <span class="brand-meaning" id="nav-brand-meaning">CELESTIAL TWILIGHT REALM</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#performance-section" class="nav-link" data-cursor-label="VIEW">PERFORMANCE</a></li>
+      <li><a href="#about-section" class="nav-link" data-cursor-label="VIEW">ABOUT</a></li>
+      <li><a href="#socials-section" class="nav-link" data-cursor-label="VIEW">CONNECT</a></li>
+    </ul>
+
+    <!-- Top right area reserved for the animated celestial branch switcher -->
+    <div class="header-right-spacer"></div>
+  </header>
+
+  <!-- =====================================================================
+       MAIN WRAPPER
+       ===================================================================== -->
+  <main class="main-content">
+
+    <!-- HOMESCREEN ONLY WRAPPER (Background image anchored here, scrolls up when user scrolls down) -->
+    <div class="homescreen-hero-wrapper" id="homescreen">
+      
+      <!-- CINEMATIC BACKGROUND ENGINE (Homescreen only background) -->
+      <div class="cinematic-stage" aria-hidden="true">
+        <div class="eye-background-viewport">
+          <!-- VESPER REALM ANIME EVENING SKIES (DEFAULT) -->
+          <img src="assets/images/vesper1.png" alt="Anime Evening Sky Lake with Shooting Star" class="eye-bg-image active" data-id="vesper1" data-realm="vesper">
+          <img src="assets/images/vesper2.jpg" alt="Anime Twilight Nebula Lake with Shooting Star" class="eye-bg-image" data-id="vesper2" data-realm="vesper">
+          <img src="assets/images/vesper3.jpg" alt="Anime Crescent Moon Celestial Twilight Night" class="eye-bg-image" data-id="vesper3" data-realm="vesper">
+
+          <!-- TOMOE REALM CHARACTERS ON ICONIC CHAIRS -->
+          <img src="assets/images/itachi_chair.jpg" alt="Itachi Uchiha on Throne" class="eye-bg-image" data-id="itachi" data-realm="tomoe">
+          <img src="assets/images/madara_chair.jpg" alt="Madara Uchiha on Stone Throne" class="eye-bg-image" data-id="madara" data-realm="tomoe">
+          <img src="assets/images/sasuke_chair.jpg" alt="Sasuke Uchiha on Throne" class="eye-bg-image" data-id="sasuke" data-realm="tomoe">
+          <img src="assets/images/kakashi_chair.jpg" alt="Kakashi Hatake on Rock Chair" class="eye-bg-image" data-id="kakashi" data-realm="tomoe">
+        </div>
+        <div class="vignette-overlay"></div>
+        <div class="noise-overlay"></div>
+        <canvas id="particles-canvas"></canvas>
+      </div>
+
+      <!-- HERO SECTION (Atmospheric Character Showcase & Reality Quotes - No PSXL AI Engineer text) -->
+      <section class="hero-section" id="hero">
+        
+        <div class="hero-quote-wrap" id="hero-character-showcase">
+          <div class="hero-character-tag" id="hero-char-tag">TWILIGHT EMBRACE // SHOOTING STARS</div>
+          <h1 class="hero-character-title font-anurati" id="hero-char-name">VESPER</h1>
+          <blockquote class="hero-character-quote" id="hero-char-quote">
+            &ldquo;When twilight descends upon the quiet waters, each shooting star carries a wish across the celestial expanse.&rdquo;
+          </blockquote>
+          <cite class="hero-quote-author" id="hero-char-author">&mdash; Vesperal Evening</cite>
+        </div>
+
+        <!-- SMALL SLEEK CINEMATIC MODE BUTTON (Image 2 Style) -->
+        <div class="hero-cta-group">
+          <button class="cinematic-mode-btn" id="hero-cinematic-trigger" type="button" data-cursor-label="CINEMA" onclick="if(window.app &amp;&amp; window.app.enterCinematic){window.app.enterCinematic();}else{document.body.classList.add('cinematic-mode-active');window.scrollTo({top:0,behavior:'smooth'});}">
+            <span>CINEMATIC MODE</span>
+            <span class="btn-arrow">&rarr;</span>
+          </button>
+
+          <a href="#socials-section" class="secondary-btn" data-cursor-label="CONNECT">
+            <span>GET IN TOUCH</span>
+          </a>
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- =====================================================================
+         THE OTHER BACKGROUND CONTAINER
+         Starts shortly after scrolling down the cinematic view button.
+         In Tomoe Realm: Deep Solid Black (#050507) with Electric Blue & White.
+         In Sakura Realm: Clean Solid White (#ffffff) with Dark Pinkish Blocks.
+         ===================================================================== -->
+    <div class="realm-content-wrapper">
+
+      <!-- PERFORMANCE SECTION (ColorWall Layout & Anurati Typography with Slide-Up Transition) -->
+      <section class="performance-section" id="performance-section">
+        <div class="perf-container">
+          
+          <!-- Top Row: Anurati Title on Left, Subtitle on Right -->
+          <div class="perf-header-row reveal-slide-item">
+            <div class="perf-title-col">
+              <div class="perf-tag-row">
+                <span class="perf-tag-text" id="perf-tag-text">AURA HARVESTING PROTOCOL</span>
+                <span class="perf-tag-dot">&middot;</span>
+                <span class="perf-tag-sub" id="perf-tag-sub">JAWLINE COMPOSITION ENGINE</span>
+              </div>
+              <h2 class="perf-title font-anurati" id="perf-title-text">
+                PERFORMANCE<br>
+                WITHOUT COMPROMISE.
+              </h2>
+            </div>
+
+            <div class="perf-desc-col">
+              <p class="perf-desc-text" id="perf-desc-text">
+                PsXL extracts maximum spatial presence with zero jawline fatigue. It isn't a crutch. It's engineered to mog.
+              </p>
+            </div>
+          </div>
+
+          <!-- 3 Blocks Grid (Mogging & Aura Farming Lore) -->
+          <div class="perf-cards-grid">
+            
+            <!-- Block 1: +10M AURA -->
+            <div class="perf-card cursor-target reveal-slide-item" data-cursor-label="AURA">
+              <div class="perf-card-header">
+                <div class="perf-stat-group">
+                  <span class="perf-bolt">⚡</span>
+                  <span class="perf-stat-num font-anurati" id="perf-card1-stat">+10M</span>
+                  <span class="perf-stat-label" id="perf-card1-label">AURA</span>
+                </div>
+                <span class="perf-plus-icon">+</span>
+              </div>
+              <p class="perf-card-detail" id="perf-card1-desc">
+                Passive aura accumulation running in background threads. Zero canthal degradation even during 24-hour eye contact.
+              </p>
+            </div>
+
+            <!-- Block 2: 99.9% MOG RATE -->
+            <div class="perf-card cursor-target reveal-slide-item" data-cursor-label="MOG">
+              <div class="perf-card-header">
+                <div class="perf-stat-group">
+                  <span class="perf-stat-num font-anurati" id="perf-card2-stat">99.9%</span>
+                  <span class="perf-stat-label" id="perf-card2-label">MOG RATE</span>
+                </div>
+                <span class="perf-plus-icon">+</span>
+              </div>
+              <p class="perf-card-detail" id="perf-card2-desc">
+                Hardware-accelerated jawline realignment. Neutralized opposing presences across all spatial dimensions.
+              </p>
+            </div>
+
+            <!-- Block 3: MAX STATUS (Blue in Dark Mode, Dark Pink in Sakura Mode) -->
+            <div class="perf-card perf-card-accent cursor-target reveal-slide-item" data-cursor-label="STATUS">
+              <div class="perf-card-header">
+                <div class="perf-stat-group">
+                  <span class="perf-stat-num font-anurati" id="perf-card3-stat">MAX</span>
+                  <span class="perf-stat-label" id="perf-card3-label">STATUS</span>
+                </div>
+                <div class="perf-circle-btn">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </div>
+              <p class="perf-card-detail" id="perf-card3-desc">
+                Full-spectrum mewing telemetry and unmatched dominance. Unprecedented aura farming efficiency.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- CLEAN 2-BLOCKS SECTION (NO OUTLINES) -->
+      <section class="section-container" id="about-section">
+        <div class="section-header reveal-slide-item">
+          <span class="section-tag">ENGINEERING PROFILE</span>
+          <h2 class="section-title" id="about-section-title">ABOUT &amp; ARSENAL</h2>
+        </div>
+
+      <div class="two-blocks-grid">
+        
+        <!-- BLOCK 1: ABOUT ME & AI/ML -->
+        <div class="clean-block cursor-target reveal-slide-item" data-cursor-label="AI/ML">
+          <span class="block-tag">01 // SPECIALIZATION</span>
+          <h3 class="block-heading" id="about-b1-title">AI &amp; MACHINE LEARNING ENGINEER</h3>
+          <p class="block-desc" id="about-b1-desc">
+            Focused on designing intelligent systems, deep neural models, and experimental machine learning pipelines. Grounded in the philosophy of <strong>Pensive Sunset Xperimental Learning</strong> (PsXL) — blending rigorous research, curiosity-driven experimentation, and high-impact engineering solutions.
+          </p>
+          <div class="language-pills-row">
+            <div class="lang-pill">
+              <span class="lang-indicator"></span>
+              <span>Machine Learning</span>
+            </div>
+            <div class="lang-pill">
+              <span class="lang-indicator"></span>
+              <span>Deep Learning</span>
+            </div>
+            <div class="lang-pill">
+              <span class="lang-indicator"></span>
+              <span>Neural Architectures</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCK 2: PROGRAMMING LANGUAGES -->
+        <div class="clean-block cursor-target reveal-slide-item" data-cursor-label="CODE">
+          <span class="block-tag">02 // CORE LANGUAGES</span>
+          <h3 class="block-heading" id="about-b2-title">LANGUAGES &amp; TECHNICAL MASTERY</h3>
+          <p class="block-desc" id="about-b2-desc">
+            Strong foundation in systems programming, data structures, and algorithmic efficiency. Leveraging clean, maintainable code across diverse paradigms from high-performance systems to modern AI toolchains.
+          </p>
+          <div class="language-pills-row">
+            <div class="lang-pill">
+              <span class="lang-indicator"></span>
+              <span>Python</span>
+            </div>
+            <div class="lang-pill">
+              <span class="lang-indicator"></span>
+              <span>C</span>
+            </div>
+            <div class="lang-pill">
+              <span class="lang-indicator"></span>
+              <span>Java</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SOCIALS SECTION (NO OUTLINES) -->
+    <section class="section-container" id="socials-section">
+      <div class="section-header reveal-slide-item">
+        <span class="section-tag">TRANSMISSION FREQUENCIES</span>
+        <h2 class="section-title">CONNECT WITH PsXL</h2>
+      </div>
+
+      <div class="socials-grid">
+
+        <!-- DISCORD CARD -->
+        <div class="social-card cursor-target reveal-slide-item" id="discord-card" data-cursor-label="DISCORD">
+          <div class="social-card-header">
+            <div class="social-icon-wrapper">
+              <svg viewBox="0 0 24 24">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+              </svg>
+            </div>
+            <div class="social-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h3 class="social-network-title">Discord</h3>
+            <div class="social-handle">psxl_uchiha</div>
+          </div>
+          <p class="social-card-desc">
+            Direct chat for AI discussions, research collabs, and project development.
+          </p>
+          <button class="social-action-btn" id="discord-copy-action">
+            <span>COPY DISCORD TAG</span>
+          </button>
+        </div>
+
+        <!-- INSTAGRAM CARD -->
+        <a href="https://instagram.com/vesperheyzee" target="_blank" rel="noopener noreferrer" class="social-card cursor-target reveal-slide-item" data-cursor-label="INSTA">
+          <div class="social-card-header">
+            <div class="social-icon-wrapper">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </div>
+            <div class="social-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h3 class="social-network-title">Instagram</h3>
+            <div class="social-handle">@vesperheyzee</div>
+          </div>
+          <p class="social-card-desc">
+            Personal updates, creative perspectives, and behind the scenes.
+          </p>
+          <div class="social-action-btn">
+            <span>VISIT INSTAGRAM</span>
+          </div>
+        </a>
+
+        <!-- LINKEDIN CARD -->
+        <a href="https://www.linkedin.com/in/suryansh-bhatt-58758242b" target="_blank" rel="noopener noreferrer" class="social-card cursor-target reveal-slide-item" data-cursor-label="LINKEDIN">
+          <div class="social-card-header">
+            <div class="social-icon-wrapper">
+              <svg viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </div>
+            <div class="social-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h3 class="social-network-title">LinkedIn</h3>
+            <div class="social-handle">Suryansh Bhatt</div>
+          </div>
+          <p class="social-card-desc">
+            Professional connections, AI engineering engagements, and career milestones.
+          </p>
+          <div class="social-action-btn">
+            <span>CONNECT ON LINKEDIN</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    </div> <!-- Close .realm-content-wrapper -->
+
+  </main>
+
+  <!-- =====================================================================
+       CINEMATIC HUD OVERLAY (Awakened Fullscreen Mode)
+       ===================================================================== -->
+  <aside class="cinematic-hud" aria-label="Cinematic View HUD">
+    <div class="hud-top-bar">
+      <div class="hud-telemetry">
+        <div>OCULAR FOCUS: <strong id="hud-target-eye">ITACHI TSUKUYOMI</strong></div>
+        <div id="hud-coords">X: 0.000 | Y: 0.000</div>
+        <div>FIELD: <span>HARMONIC MATRIX ACTIVE</span></div>
+      </div>
+      <button class="exit-cinematic-btn" type="button" data-cursor-label="EXIT" onclick="if(window.app &amp;&amp; window.app.exitCinematic){window.app.exitCinematic();}else{document.body.classList.remove('cinematic-mode-active');}">
+        <span>EXIT CINEMATIC [ESC]</span>
+      </button>
+    </div>
+
+    <div class="hud-crosshair"></div>
+
+    <div class="hud-bottom-bar">
+      <div class="hud-instructions">
+        [MOVE CURSOR TO NAVIGATE MATRIX] • [ESC EXITS VIEW]
+      </div>
+    </div>
+  </aside>
+
+  <!-- =====================================================================
+       TOAST NOTIFICATION
+       ===================================================================== -->
+  <div class="toast-notice" id="toast-notification">
+    <svg width="18" height="18" viewBox="0 0 24 24">
+      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+    </svg>
+    <span id="toast-text">DISCORD TAG COPIED TO CLIPBOARD</span>
+  </div>
+
+  <!-- =====================================================================
+       FOOTER
+       ===================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        &copy; 2026 <strong>PsXL</strong> (Pensive Sunset Xperimental Learning). AI & ML Engineering.
+      </div>
+      <div class="footer-credits" id="footer-realm-credits">
+        NEURAL DOOJUTSU // SHARINGAN REALM
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       ONE-LINE CORNER EDIT BUTTON (No block, minimalist text at end corner)
+       ===================================================================== -->
+  <button class="corner-edit-btn" id="open-editor-btn" type="button" data-cursor-label="EDIT" title="Edit Realm Contents">edit</button>
+
+  <!-- =====================================================================
+       REALM CONTENT & HEADINGS EDITOR MODAL
+       Allows editing all contents & headings below wallpaper for BOTH realms
+       ===================================================================== -->
+  <div class="realm-editor-modal" id="realm-editor-modal" aria-hidden="true">
+    <div class="editor-backdrop" id="editor-backdrop"></div>
+    <div class="editor-dialog">
+      <div class="editor-header">
+        <div>
+          <h3 class="editor-modal-title">REALM CONTENT EDITOR</h3>
+          <p class="editor-modal-desc">Edit headings and contents below the wallpaper for both realms.</p>
+        </div>
+        <button class="editor-close-btn" id="close-editor-btn" type="button" aria-label="Close Editor">&times;</button>
+      </div>
+
+      <!-- Realm Switcher Tabs inside Editor -->
+      <div class="editor-tabs-bar">
+        <button class="editor-tab active" id="tab-btn-vesper" type="button" data-realm="vesper">
+          <span>VESPER REALM</span>
+        </button>
+        <button class="editor-tab" id="tab-btn-tomoe" type="button" data-realm="tomoe">
+          <span>TOMOIE REALM</span>
+        </button>
+      </div>
+
+      <div class="editor-body">
+        
+        <!-- SECTION 1: PERFORMANCE SHOWCASE -->
+        <div class="editor-group">
+          <div class="editor-group-tag">01 // PERFORMANCE SECTION</div>
+          
+          <div class="editor-row">
+            <div class="editor-input-box">
+              <label>Heading Line 1</label>
+              <input type="text" id="inp-perf-title1">
+            </div>
+            <div class="editor-input-box">
+              <label>Heading Line 2</label>
+              <input type="text" id="inp-perf-title2">
+            </div>
+          </div>
+
+          <div class="editor-row">
+            <div class="editor-input-box">
+              <label>Tag Text (e.g. Protocol)</label>
+              <input type="text" id="inp-perf-tag">
+            </div>
+            <div class="editor-input-box">
+              <label>Sub-tag Text</label>
+              <input type="text" id="inp-perf-subtag">
+            </div>
+          </div>
+
+          <div class="editor-input-box full">
+            <label>Section Description</label>
+            <textarea id="inp-perf-desc" rows="2"></textarea>
+          </div>
+
+          <!-- The 3 Blocks -->
+          <div class="editor-blocks-grid">
+            <div class="editor-block-edit">
+              <div class="block-edit-label">BLOCK 1</div>
+              <input type="text" id="inp-card1-stat" placeholder="Stat (+10M)">
+              <input type="text" id="inp-card1-label" placeholder="Label (AURA)">
+              <textarea id="inp-card1-desc" rows="3" placeholder="Description"></textarea>
+            </div>
+
+            <div class="editor-block-edit">
+              <div class="block-edit-label">BLOCK 2</div>
+              <input type="text" id="inp-card2-stat" placeholder="Stat (99.9%)">
+              <input type="text" id="inp-card2-label" placeholder="Label (MOG RATE)">
+              <textarea id="inp-card2-desc" rows="3" placeholder="Description"></textarea>
+            </div>
+
+            <div class="editor-block-edit">
+              <div class="block-edit-label">BLOCK 3</div>
+              <input type="text" id="inp-card3-stat" placeholder="Stat (MAX)">
+              <input type="text" id="inp-card3-label" placeholder="Label (STATUS)">
+              <textarea id="inp-card3-desc" rows="3" placeholder="Description"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 2: ABOUT & ARSENAL -->
+        <div class="editor-group">
+          <div class="editor-group-tag">02 // ABOUT SECTION</div>
+          <div class="editor-input-box full">
+            <label>About Section Title</label>
+            <input type="text" id="inp-about-title">
+          </div>
+          <div class="editor-row">
+            <div class="editor-input-box">
+              <label>Block 1 Title</label>
+              <input type="text" id="inp-about-b1-title">
+              <label style="margin-top:0.4rem">Block 1 Description</label>
+              <textarea id="inp-about-b1-desc" rows="3"></textarea>
+            </div>
+            <div class="editor-input-box">
+              <label>Block 2 Title</label>
+              <input type="text" id="inp-about-b2-title">
+              <label style="margin-top:0.4rem">Block 2 Description</label>
+              <textarea id="inp-about-b2-desc" rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="editor-footer">
+        <button class="editor-btn-save" id="btn-save-realm-content" type="button">SAVE CHANGES</button>
+        <button class="editor-btn-reset" id="btn-reset-realm-content" type="button">RESET DEFAULTS</button>
+        <button class="editor-btn-cancel" id="btn-cancel-realm-content" type="button">CANCEL</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="scripts/canvas.js"></script>
+  <script src="scripts/cursor.js"></script>
+  <script src="scripts/main.js"></script>
+
+</body>
+</html>

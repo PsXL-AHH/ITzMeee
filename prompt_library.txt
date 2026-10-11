@@ -1,0 +1,117 @@
+================================================================================
+           ANTI-AI-SLOP WEB DESIGN PROMPT LIBRARY (Awwwards / Bespoke Caliber)
+================================================================================
+
+This document contains production-tested, copy-paste prompts designed to make AI 
+generate high-end, custom websites with unique typography, physics, and interactions,
+completely avoiding generic "AI slop" (cliche purple gradients, bootstrap grids, 
+boring toggles, and template cards).
+
+--------------------------------------------------------------------------------
+1. MASTER FOUNDATION PROMPT (Use as Base for Any New Project)
+--------------------------------------------------------------------------------
+
+Build a bespoke, production-ready website with Vanilla HTML, modern CSS, and vanilla JS. 
+
+STRICT DESIGN RULES (AVOID AI SLOP):
+1. Typography: Do NOT use default system fonts or plain Arial/Roboto. Use curated Google Font pairings with deliberate tracking: Display headings in 'Space Grotesk' (weight: 700/800, letter-spacing: -0.02em, tight line-height: 1.15) paired with 'Inter' (weight: 400/500, line-height: 1.65, slate color) for body text, and 'JetBrains Mono' for technical tags and metrics.
+2. Layout: No generic centered 3-card Bootstrap grids. Use an editorial, asymmetric layout with generous negative space (grid gaps: 6rem to 9.5rem). Home hero text must be strictly left-aligned with a minimal left margin (2rem) and bold scale hierarchy.
+3. Card Design: Minimalist bento-card style (inspired by ColorWall): crisp 1px borders (rgba(0,0,0,0.08) in light mode, rgba(255,255,255,0.1) in dark mode), subtle elevation shadow (0 2px 10px rgba(0,0,0,0.03)), clean 18px rounded corners, and a delicate top-right corner '+' or indicator accent.
+4. Micro-Interactions: No static elements. Include custom lerped cursor with hover labels, magnetic button physics, and subtle card tilt on mouse move.
+
+
+--------------------------------------------------------------------------------
+2. BENTO CARDS & LUXURY SPACING (ColorWall Minimalist Style)
+--------------------------------------------------------------------------------
+
+Create an "Arsenal / Highlights" section featuring exactly 2 clean bento cards side-by-side with wide breathing room:
+- Container: Max-width 1400px with a massive grid gap of 9.5rem between the two columns so they never feel crowded.
+- Card Aesthetic: Minimalist bento box styling with 18px rounded corners, a crisp 1px border (#e2e8f0 in light mode, rgba(255,255,255,0.1) in dark mode), pure white background, and a delicate top-right '+' accent that rotates 90deg on hover.
+- Content Hierarchy:
+  * 01 // CATEGORY technical tag in JetBrains Mono (0.72rem, uppercase, wide letter-spacing: 0.16em)
+  * Bold, compact heading in Space Grotesk (1.55rem, letter-spacing: -0.015em)
+  * Description in Inter (0.92rem, line-height: 1.65, muted slate #64748b)
+  * Bottom row: Minimalist micro-badges with 8px radius, subtle 1px border, and a 5px glowing indicator dot.
+
+
+--------------------------------------------------------------------------------
+3. BESPOKE THEME SWITCHING (World-Building / Dual-Realm Engine)
+--------------------------------------------------------------------------------
+
+Replace standard dark/light switch toggles with an interactive thematic world-switcher:
+- Placement & Mechanics: Position an animated SVG illustration (e.g., an animated Sakura tree branch or mechanical rune) anchored strictly to the top-right corner of the viewport (position: absolute so it scrolls naturally with the page).
+- State Morph: Clicking this corner element toggles the entire website between two distinct narrative realms:
+  1. Void/Crimson Realm: Dark obsidian void, glowing embers canvas, crimson typography, and dark glass backplates. The corner leaves glow pink.
+  2. Sakura Blossom Realm: Ethereal white/pearl, falling petal canvas, slate typography, and pure white cards. The corner leaves switch to crimson.
+- Provide smooth CSS transitions on all color tokens via CSS custom variables (--bg-void, --crimson, --text-primary) with cubic-bezier(0.16, 1, 0.3, 1).
+
+
+--------------------------------------------------------------------------------
+4. CUSTOM LERPING CURSOR & MAGNETIC BUTTON INTERACTIONS
+--------------------------------------------------------------------------------
+
+Implement a custom 60FPS dual-element cursor engine in vanilla JavaScript:
+- Structure: A sharp central dot (7px) that follows the pointer immediately with 0.65 interpolation, and a larger ring (40px) with physics inertia/lag (0.16 lerp factor).
+- Dynamic Morphing:
+  * The ring contains inline SVG iconography (e.g., spinning Tomoe in dark mode vs. Sakura blossom in light mode).
+  * On hovering interactive targets (buttons, cards, links), add a .cursor-hover state to body, scale the ring, and display a floating text badge (.cursor-label) derived from the target element's data-cursor-label attribute (e.g., "VIEW", "EXPLORE", "CINEMA").
+- Magnetic Button Physics: When hovering primary buttons, apply a magnetic pull effect (translate offset calculated from button center relative to mouse position * 0.25).
+
+
+--------------------------------------------------------------------------------
+5. PROCEDURAL 2D/3D PARTICLE ENGINE (HTML5 Canvas)
+--------------------------------------------------------------------------------
+
+Build an HTML5 Canvas background particle system layered behind the content:
+- Multi-Realm Particle Physics:
+  * Mode A (Dark Realm): Rising embers and fiery motes floating upward with randomized lifespan, subtle horizontal sine-wave drift, and orange/crimson glow blur.
+  * Mode B (Light Realm): 3D falling sakura petals with realistic wind physics, wobble angle, and tumbling 3D flip rotation (scaling petal width via Math.cos(flipAngle)).
+- Mouse Reactivity: When the user moves the mouse rapidly (velocity > 25px/frame), burst spawn extra particles at the cursor coordinates.
+- Ensure the canvas is full-screen (position: fixed, inset: 0, pointer-events: none, z-index: 0) and handles devicePixelRatio scaling for retina screens.
+
+
+--------------------------------------------------------------------------------
+6. FULLSCREEN CINEMATIC HUD / OCULAR MATRIX VIEWPORT
+--------------------------------------------------------------------------------
+
+Implement a dedicated "Cinematic View" modal that strips away all page layout to focus on the background visuals:
+- Trigger: Clicking "ENTER CINEMATIC VIEW" hides the header and main content with a scale(0.96) fade-out, locks body scroll (overflow: hidden), and smoothly scrolls to top (window.scrollTo).
+- HUD Overlay: Fade in a full-screen tactical HUD:
+  * Top bar: Real-time telemetry displaying active target name and live normalized cursor coordinates (e.g., X: 0.452 | Y: 0.812).
+  * Center: Rotating dashed circular crosshair with center alignment reticles.
+  * Exit Button: Prominent "EXIT CINEMATIC [ESC]" pill button in the top corner.
+- Keyboard bindings: Pressing 'ESC' exits cinematic view; pressing 'C' toggles it on/off.
+
+
+--------------------------------------------------------------------------------
+7. ZERO-DEPENDENCY PROCEDURAL WEB AUDIO SYNTHESIZER
+--------------------------------------------------------------------------------
+
+Add ambient micro-sound design using the browser's native Web Audio API (zero external audio files/MP3s):
+- Sound 1 (Hover Chime): Triangle oscillator ramping from 520Hz to 680Hz over 80ms with exponential gain decay.
+- Sound 2 (Awaken / Realm Switch): Sine wave sweeping exponentially from 140Hz to 440Hz over 600ms with smooth gain envelope.
+- Sound 3 (Tactile Switch): Low-pitch sine wave descending from 320Hz to 180Hz over 400ms.
+- Ensure AudioContext is instantiated on the first user interaction to comply with browser autoplay policies.
+
+
+================================================================================
+                    CHEAT CODE VOCABULARY REFERENCE TABLE
+================================================================================
+
+Replace Common AI Cliches:
+--------------------------------------------------------------------------------
+INSTEAD OF: "Make it look modern"
+USE THIS:   "Minimalist bento-card aesthetic with 1px borders (#e2e8f0), subtle elevation, and generous 8rem+ negative space."
+
+INSTEAD OF: "Use nice fonts"
+USE THIS:   "Editorial typographic hierarchy: Space Grotesk 800 with -0.02em tracking for titles, Inter 400 with 1.65 line-height for body, JetBrains Mono for tags."
+
+INSTEAD OF: "Add dark mode"
+USE THIS:   "Dual-realm narrative morphing controlled via CSS variables and an interactive corner illustration instead of a standard toggle."
+
+INSTEAD OF: "Add animations"
+USE THIS:   "60FPS lerped cursor with data-cursor-label dynamic text, magnetic button pull, and canvas particle physics."
+
+INSTEAD OF: "Make it responsive"
+USE THIS:   "Editorial left-aligned desktop layout (2rem left margin) collapsing to single-column card stacks at 1024px."
+================================================================================
